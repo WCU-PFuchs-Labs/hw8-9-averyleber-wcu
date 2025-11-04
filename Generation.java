@@ -119,6 +119,7 @@ public class Generation {
      */
     public void printBestTree() {
         if (trees == null || trees.length == 0) return;
-        System.out.println(getBestTree());
+        System.out.print(getBestTree());
     }
 }
+
