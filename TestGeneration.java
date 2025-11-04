@@ -12,7 +12,7 @@ public class TestGeneration {
 
             // Generation parameters
             int populationSize = 500;
-            int maxDepth = 3;
+            int maxDepth = 2;
 
             // Initialize generation
             Generation generation = new Generation(populationSize, maxDepth, fileName);
@@ -47,3 +47,4 @@ public class TestGeneration {
         }
     }
 }
+
