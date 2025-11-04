@@ -6,7 +6,7 @@ public class TestGeneration {
     private static String formatFitness(double value) {
         if (value < 100) {
             // Pad small numbers with leading zeros to width 5 (e.g., 09.31, 017.22)
-            return String.format("%05.2f", value);
+            return String.format("%.2f", value);
         } else {
             // Numbers >= 100 print normally with 2 decimals
             return String.format("%.2f", value);
@@ -58,3 +58,4 @@ public class TestGeneration {
         }
     }
 }
+
