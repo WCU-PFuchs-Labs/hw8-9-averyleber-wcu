@@ -77,7 +77,7 @@ public class Node implements Cloneable {
     }
 
     public void traverse(Collector c) {
-        // Collect this node if it’s a Binop (binary operator)
+        // Collect this node if it's a Binop (binary operator)
         if (operation instanceof Binop) {
             c.collect(this);
         }
@@ -112,3 +112,4 @@ public class Node implements Cloneable {
         else return operation.toString();
     }
 }
+
