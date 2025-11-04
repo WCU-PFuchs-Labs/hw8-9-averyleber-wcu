@@ -15,11 +15,12 @@ public class TestGeneration {
 
             generation.evalAll();
 
-            System.out.println("Best GPTree: ");
-            generation.printBestTree();
+            System.out.print("Best GPTree: ");
+            generation.printBestTree(); // print on same line
+            System.out.println(" = " + String.format("%.2E", generation.getBestTree().getFitness())); // scientific notation
             System.out.println("Fitness: " + String.format("%.2f", generation.getBestTree().getFitness()));
 
-            System.out.println("\nTop Ten Fitness Values:");
+            System.out.println("Top Ten Fitness Values:");
             ArrayList<GPTree> topTen = generation.getTopTen();
             for (int i = 0; i < topTen.size(); i++) {
                 System.out.print(String.format("%.2f", topTen.get(i).getFitness()));
