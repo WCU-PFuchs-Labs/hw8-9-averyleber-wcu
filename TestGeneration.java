@@ -9,35 +9,30 @@ public class TestGeneration {
             System.out.print("Enter the CSV data file path: ");
             String fileName = sc.nextLine();
 
-            // Parameters for the generation
             int populationSize = 500;
             int maxDepth = 3;
 
-            // Initialize generation
             Generation generation = new Generation(populationSize, maxDepth, fileName);
 
             // Evaluate all trees
             generation.evalAll();
 
-            // Print best tree on a single line with scientific notation
+            // Best tree with scientific notation
             System.out.print("Best GPTree: ");
-            // Ensure printBestTree does NOT add a newline
-            generation.printBestTree();
+            generation.printBestTree(); // prints only the tree structure, no newline
             System.out.println(" = " + String.format("%.2E", generation.getBestTree().getFitness()));
 
-            // Print Fitness line with two decimals
+            // Fitness line
             System.out.println("Fitness: " + String.format("%.2f", generation.getBestTree().getFitness()));
 
-            // Print top ten fitness values on one line
+            // Top ten fitness values
             System.out.println("Top Ten Fitness Values:");
             ArrayList<GPTree> topTen = generation.getTopTen();
             for (int i = 0; i < topTen.size(); i++) {
                 System.out.print(String.format("%.2f", topTen.get(i).getFitness()));
-                if (i < topTen.size() - 1) {
-                    System.out.print(", ");
-                }
+                if (i < topTen.size() - 1) System.out.print(", ");
             }
-            System.out.println();
+            System.out.println(); // only one newline at the end
 
         } catch (Exception e) {
             e.printStackTrace();
