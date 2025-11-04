@@ -21,11 +21,14 @@ public class TestGeneration {
 
             // Print best tree on a single line with scientific notation
             System.out.print("Best GPTree: ");
-            generation.printBestTree(); // no newline added
+            // Ensure printBestTree does NOT add a newline
+            generation.printBestTree();
             System.out.println(" = " + String.format("%.2E", generation.getBestTree().getFitness()));
 
+            // Print Fitness line with two decimals
             System.out.println("Fitness: " + String.format("%.2f", generation.getBestTree().getFitness()));
 
+            // Print top ten fitness values on one line
             System.out.println("Top Ten Fitness Values:");
             ArrayList<GPTree> topTen = generation.getTopTen();
             for (int i = 0; i < topTen.size(); i++) {
@@ -35,7 +38,6 @@ public class TestGeneration {
                 }
             }
             System.out.println();
-
 
         } catch (Exception e) {
             e.printStackTrace();
