@@ -1,34 +1,48 @@
 import java.util.*;
 
 public class TestGPTree {
-    static int numIndepVars = 3;
-    static int maxDepth = 5;
-    static Random rand = new Random();
-
     /*
      * Purpose: Tests the GPTree class as well as new versions using crossover.
      */
     public static void main(String[] args) {
-        double[] data = {3.14, 2.78, 1.0};
-        Binop[] ops = {
-            new Plus(),
-            new Minus(),
-            new Mult(),
-            new Divide()
-        };
-        NodeFactory n = new NodeFactory(ops, numIndepVars);
+        Scanner sc = new Scanner(System.in);
 
-        GPTree gpt1 = new GPTree(n, maxDepth, rand);
-        System.out.println(gpt1 + " = " + gpt1.eval(data));
+        try {
+            // Prompt for CSV file path
+            System.out.print("Enter the CSV data file path: ");
+            String fileName = sc.nextLine();
 
-        GPTree gpt2 = new GPTree(n, maxDepth, rand);
-        System.out.println(gpt2 + " = " + gpt2.eval(data));
+            // Generation parameters
+            int populationSize = 500;
+            int maxDepth = 2;
 
-        gpt1.crossover(gpt2, rand);
+            // Initialize generation
+            Generation generation = new Generation(populationSize, maxDepth, fileName);
 
-        System.out.println("After crossover");
-        System.out.println(gpt1 + " = " + gpt1.eval(data));
-        System.out.println(gpt2 + " = " + gpt2.eval(data));
+            // Evaluate all trees
+            generation.evalAll();
+
+            GPTree bestTree = generation.getBestTree();
+            double fitness = bestTree.getFitness();
+
+            for (int i = 0; i < 50; i++) {
+                System.out.println("Generation " + (i + 1) + ": ");
+                generation.evolve();
+
+                // Print Best GPTree line with single equals sign
+                System.out.print("Best GPTree: ");
+                generation.printBestTree(); // prints only tree structure
+                System.out.print(" = " + String.format("%.2f", fitness) + "\n");
+
+                // Print Fitness line
+                System.out.print("Fitness: " + String.format("%.2f", fitness) + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sc.close();
+        }
+
+        
     }
-
 }
