@@ -5,21 +5,29 @@ public class TestGeneration {
         Scanner sc = new Scanner(System.in);
 
         try {
+            // Prompt for CSV file path
             System.out.print("Enter the CSV data file path: ");
             String fileName = sc.nextLine();
 
+            // Parameters for the generation
             int populationSize = 500;
             int maxDepth = 3;
 
+            // Initialize generation
             Generation generation = new Generation(populationSize, maxDepth, fileName);
 
+            // Evaluate all trees
             generation.evalAll();
 
+            // Print best tree on a single line with scientific notation
             System.out.print("Best GPTree: ");
-            generation.printBestTree(); // print on same line
-            System.out.println(" = " + String.format("%.2E", generation.getBestTree().getFitness())); // scientific notation
+            generation.printBestTree(); // prints the tree structure
+            System.out.println(" = " + String.format("%.2E", generation.getBestTree().getFitness()));
+
+            // Print fitness
             System.out.println("Fitness: " + String.format("%.2f", generation.getBestTree().getFitness()));
 
+            // Print top ten fitness values
             System.out.println("Top Ten Fitness Values:");
             ArrayList<GPTree> topTen = generation.getTopTen();
             for (int i = 0; i < topTen.size(); i++) {
@@ -29,6 +37,7 @@ public class TestGeneration {
                 }
             }
             System.out.println();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
