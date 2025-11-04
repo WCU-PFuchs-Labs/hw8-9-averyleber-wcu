@@ -23,10 +23,10 @@ public class TestGeneration {
             // Print Best GPTree line with fixed decimal (no scientific notation)
             System.out.print("Best GPTree: ");
             generation.printBestTree(); // prints only tree structure
-            System.out.println(" = " + String.format("%.2f", fitness));
+            System.out.println(" = " + String.format("%05.2f", fitness));
 
             // Print Fitness line
-            System.out.println("Fitness: " + String.format("%.2f", fitness));
+            System.out.println("Fitness: " + String.format("%05.2f", fitness));
 
             // Print Top Ten Fitness Values
             System.out.println("Top Ten Fitness Values:");
