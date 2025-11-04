@@ -32,7 +32,7 @@ public class TestGeneration {
             System.out.print("Fitness: " + String.format("%.2f", fitness) + "\n");
 
             // Print Top Ten Fitness Values on one line
-            System.out.print("Top Ten Fitness Values:\n");
+            System.out.print("Top Ten Fitness Values: ");
             ArrayList<GPTree> topTen = generation.getTopTen();
             for (int i = 0; i < topTen.size(); i++) {
                 System.out.print(String.format("%.2f", topTen.get(i).getFitness()));
@@ -47,4 +47,3 @@ public class TestGeneration {
         }
     }
 }
-
