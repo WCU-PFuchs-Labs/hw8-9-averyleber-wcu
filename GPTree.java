@@ -217,7 +217,7 @@ public class GPTree implements Collector, Comparable<GPTree>, Cloneable {
     
     @Override
     public String toString() { 
-        return root.toString() + " = " + fitness; 
+        return root.toString(); 
     }
     
     public double eval(double[] data) { 
@@ -229,3 +229,4 @@ public class GPTree implements Collector, Comparable<GPTree>, Cloneable {
     }
 
 }
+
